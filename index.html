@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Scan Viewer</title>
+  <style>
+    @font-face {
+      font-family: 'ChelseaMarket';
+      src: url('ChelseaMarket.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      height: 60px;
+    }
+
+    .instagram-link {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'ChelseaMarket', sans-serif;
+      font-size: 18px;
+      color: black;
+      text-decoration: none;
+    }
+
+    .instagram-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Modell View Container */
+    #model-container {
+      width: 80%; /* Container wird größer */
+      height: 80vh; /* Container wird größer */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0; /* Hintergrundfarbe für besseren Kontrast */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img src="logo_schwarz.png" alt="Logo" class="logo">
+
+  <!-- Instagram Link -->
+  <a href="https://www.instagram.com/wirsindunsolide/" class="instagram-link" target="_blank">Instagram</a>
+
+  <!-- 3D Modell View Container -->
+  <div id="model-container">
+    <!-- Clooned 3D Model -->
+    <script src="https://clooned.com/wp-content/uploads/cloons/scripts/clooned.js"></script>
+    <clooned-object features="lsc;dt;fs" oid="2632eb37ae80456f93ec8a9d21dd7304"></clooned-object>
+  </div>
+
+</body>
+</html>
