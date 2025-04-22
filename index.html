@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3D Model Viewer</title>
+  <title>3D Model Viewer - Ente</title>
   <style>
     body {
       margin: 0;
@@ -14,9 +14,9 @@
 <body>
 
 <script type="module">
-  import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-  import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
-  import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+  import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+  import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
   // Szene, Kamera, Renderer
   const scene = new THREE.Scene();
@@ -36,10 +36,10 @@
   // Steuerung
   const controls = new OrbitControls(camera, renderer.domElement);
 
-  // Model Loader
+  // Model Loader (Ente)
   const loader = new GLTFLoader();
   loader.load(
-    './Duck.glb',  // Pfad zu deinem Modell
+    'https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/glTF/AnimatedCube/glTF/AnimatedCube.gltf',  // Hier die URL der Test-Ente
     function (gltf) {
       scene.add(gltf.scene);
       gltf.scene.scale.set(1, 1, 1); // Optional: Größer/Kleiner machen
@@ -69,4 +69,3 @@
 
 </body>
 </html>
-
