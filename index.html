@@ -53,14 +53,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 120px;
+      padding-top: 80px; /* vorher 120px – jetzt weniger */
       padding-bottom: 120px;
-      gap: 15vh; /* vertikaler Abstand */
+      gap: 15vh;
     }
 
     /* Inhaltselemente */
     .content-item {
-      width: 65%; /* etwas kleiner am Laptop */
+      width: 65%;
       max-width: 700px;
       min-width: 280px;
     }
@@ -76,7 +76,8 @@
     /* 3D Modell */
     model-viewer {
       width: 100%;
-      aspect-ratio: 4 / 3; /* größer in der Höhe */
+      height: auto;
+      min-height: 500px; /* größerer Startwert */
       background-color: transparent;
     }
 
@@ -95,12 +96,16 @@
 
       .content {
         gap: 10vh;
-        padding-top: 100px;
+        padding-top: 80px;
         padding-bottom: 100px;
       }
 
       .content-item {
-        width: 90%; /* auf Handy wieder größer */
+        width: 90%;
+      }
+
+      model-viewer {
+        min-height: 300px;
       }
     }
   </style>
@@ -130,7 +135,9 @@
         alt="3D Modell der Gleishalle" 
         auto-rotate 
         camera-controls
-        environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr">
+        interaction-prompt="none"
+        environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
+        style="--poster-color: transparent;">
       </model-viewer>
     </div>
 
