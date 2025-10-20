@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>unsolide</title>
-  <link rel="icon" type="image/png" href="logo_klein.png"> <!-- kleines Logo im Tab -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
     @font-face {
@@ -17,18 +19,19 @@
       margin: 0;
       background: #ffffff;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      overflow-x: hidden;
     }
 
+    /* Fixiertes Logo oben rechts */
     .logo {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
       height: 60px;
+      z-index: 10;
     }
 
+    /* Fixierter Instagram-Link unten mittig */
     .instagram-link {
       position: fixed;
       bottom: 20px;
@@ -38,86 +41,124 @@
       font-size: 18px;
       color: black;
       text-decoration: none;
+      z-index: 10;
     }
 
     .instagram-link:hover {
       text-decoration: underline;
     }
 
-    .content-item {
-      width: 90%;
-      max-width: 800px;
-      margin: 40px auto;
+    /* Hauptcontainer */
+    .content {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      padding-top: 0; /* kein generelles Padding oben */
+      padding-bottom: 120px;
+      gap: 10vh; /* etwas geringerer, harmonischer Abstand */
     }
 
+    /* erstes Element bekommt gezielten Abstand nach oben */
     .content-item:first-child {
-      margin-top: -60px; /* etwas höher unter dem Logo */
+      margin-top: -50px; /* feinjustierbar (z.B. 80–120px) */
     }
 
-    img, object, model-viewer {
+    /* Inhaltselemente */
+    .content-item {
+      width: 65%;
+      max-width: 700px;
+      min-width: 280px;
+    }
+
+    /* Bilder */
+    .content-item img {
       width: 100%;
       height: auto;
       display: block;
-      border: none;
+      object-fit: contain;
     }
 
-    /* spezieller Wrapper für das 3D-Modell */
-    .model-container {
-      margin-top: -40px; /* gleicht Weißraum oben aus */
-    }
-
-    .model-container model-viewer {
+    /* 3D Modell */
+    model-viewer {
       width: 100%;
       height: auto;
-      max-width: 800px;
-      object-fit: contain;
-      object-position: center;
+      min-height: 500px; /* größer als zuvor */
+      background-color: transparent;
     }
 
-    /* Responsives Verhalten */
-    @media (max-width: 768px) {
+    /* Mobile Anpassungen */
+    @media (max-width: 600px) {
+      .logo {
+        height: 45px;
+        top: 15px;
+        right: 15px;
+      }
+
+      .instagram-link {
+        font-size: 16px;
+        bottom: 15px;
+      }
+
+      .content {
+        gap: 10vh;
+        padding-bottom: 100px;
+      }
+
       .content-item {
-        width: 95%;
-        margin: 30px auto;
+        width: 90%;
+      }
+
+      .content-item:first-child {
+        margin-top: 80px;
+      }
+
+      model-viewer {
+        min-height: 320px;
       }
     }
   </style>
 
+  <!-- Google Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
-  <!-- Logo oben rechts -->
+  <!-- Logo -->
   <img src="logo_schwarz.png" alt="Logo" class="logo">
 
-  <!-- Inhalte -->
-  <div class="content-item">
-    <img src="titelbild.jpg" alt="Titelbild">
-  </div>
+  <!-- Instagram Link -->
+  <a href="https://www.instagram.com/wirsindunsolide/" class="instagram-link" target="_blank">Instagram</a>
 
-  <div class="content-item">
-    <object data="plakat_feld.pdf" type="application/pdf" width="100%" height="600px"></object>
-  </div>
+  <!-- Inhalt -->
+  <div class="content">
+    <!-- Plakat Event -->
+    <div class="content-item">
+      <img src="plakat_event.jpg" alt="Plakat zum Event">
+    </div>
 
-  <div class="content-item model-container">
-    <model-viewer
-      src="test.glb"
-      alt="3D Modell der Gleishalle"
-      auto-rotate
-      camera-controls
-      environment-image="neutral.hdr"
-      poster="loading.jpg"
-      loading="lazy">
-    </model-viewer>
-  </div>
+    <!-- 3D Modell -->
+    <div class="content-item">
+      <model-viewer 
+        src="test.glb" 
+        alt="3D Modell der Gleishalle" 
+        auto-rotate 
+        camera-controls
+        interaction-prompt="none"
+        environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
+        style="--poster-color: transparent;">
+      </model-viewer>
+    </div>
 
-  <!-- Instagram-Link -->
-  <a href="https://www.instagram.com/wirsindunsolide/" class="instagram-link" target="_blank">
-    Instagram
-  </a>
+    <!-- Neues Plakat fürs Feld -->
+    <div class="content-item">
+      <img src="plakat_feld.jpg" alt="Plakat fürs Feld">
+    </div>
+
+    <!-- Titelbild -->
+    <div class="content-item">
+      <img src="titelbild_unsolide.jpg" alt="Titelbild unsolide">
+    </div>
+  </div>
 
 </body>
 </html>
