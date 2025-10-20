@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>unsolide</title>
+
+  <!-- Favicon (kleines Logo im Browser-Tab) -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <style>
     @font-face {
       font-family: 'ChelseaMarket';
@@ -14,19 +18,22 @@
     body {
       margin: 0;
       background: #ffffff;
-      overflow: hidden;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
 
+    /* Fixiertes Logo oben rechts */
     .logo {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
       height: 60px;
+      z-index: 10;
     }
 
+    /* Fixierter Instagram-Link unten mittig */
     .instagram-link {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -34,19 +41,55 @@
       font-size: 18px;
       color: black;
       text-decoration: none;
+      z-index: 10;
     }
 
     .instagram-link:hover {
       text-decoration: underline;
     }
 
-    /* Modell View Container */
-    #model-container {
-      width: 100%;
-      height: 100vh; /* Nimmt die ganze Höhe ein */
+    /* Hauptcontainer für Inhalte */
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 120px; /* Platz für Logo */
+      padding-bottom: 100px; /* Platz für Instagram-Link */
+      gap: 200px; /* Weißraum zwischen den Elementen */
     }
+
+    /* Allgemeiner Stil für Inhalte */
+    .content-item {
+      width: 80%;
+      max-width: 800px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* Für Bilder */
+    .content-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Für das 3D Modell */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+
   </style>
 
+  <!-- Google Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
@@ -57,16 +100,28 @@
   <!-- Instagram Link -->
   <a href="https://www.instagram.com/wirsindunsolide/" class="instagram-link" target="_blank">Instagram</a>
 
-  <!-- 3D Modell View Container -->
-  <div id="model-container">
-    <model-viewer 
-      src="test.glb" 
-      alt="3D Modell der Gleishalle" 
-      auto-rotate 
-      camera-controls
-      environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
-      style="width: 100%; height: 100%;">
-    </model-viewer>
+  <!-- Scrollbarer Inhaltsbereich -->
+  <div class="content">
+    <!-- Plakat -->
+    <div class="content-item">
+      <img src="plakat_event.jpg" alt="Plakat zum Event">
+    </div>
+
+    <!-- 3D Modell -->
+    <div class="content-item">
+      <model-viewer 
+        src="modell_gleishalle.glb" 
+        alt="3D Modell der Gleishalle" 
+        auto-rotate 
+        camera-controls
+        environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr">
+      </model-viewer>
+    </div>
+
+    <!-- Titelbild -->
+    <div class="content-item">
+      <img src="titelbild_unsolide.jpg" alt="Titelbild unsolide">
+    </div>
   </div>
 
 </body>
