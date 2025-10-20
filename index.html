@@ -55,13 +55,14 @@
       align-items: center;
       padding-top: 120px;
       padding-bottom: 120px;
-      gap: 15vh; /* schöner vertikaler Abstand */
+      gap: 15vh; /* vertikaler Abstand */
     }
 
     /* Inhaltselemente */
     .content-item {
-      width: 80%;
-      max-width: 800px;
+      width: 65%; /* etwas kleiner am Laptop */
+      max-width: 700px;
+      min-width: 280px;
     }
 
     /* Bilder */
@@ -69,13 +70,13 @@
       width: 100%;
       height: auto;
       display: block;
-      object-fit: contain; /* sorgt dafür, dass nichts abgeschnitten wird */
+      object-fit: contain;
     }
 
     /* 3D Modell */
     model-viewer {
       width: 100%;
-      aspect-ratio: 16 / 9; /* hält Seitenverhältnis dynamisch */
+      aspect-ratio: 4 / 3; /* größer in der Höhe */
       background-color: transparent;
     }
 
@@ -99,7 +100,7 @@
       }
 
       .content-item {
-        width: 90%;
+        width: 90%; /* auf Handy wieder größer */
       }
     }
   </style>
@@ -117,7 +118,7 @@
 
   <!-- Inhalt -->
   <div class="content">
-    <!-- Plakat -->
+    <!-- Plakat Event -->
     <div class="content-item">
       <img src="plakat_event.jpg" alt="Plakat zum Event">
     </div>
@@ -131,6 +132,11 @@
         camera-controls
         environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr">
       </model-viewer>
+    </div>
+
+    <!-- Neues Plakat fürs Feld -->
+    <div class="content-item">
+      <img src="plakat_feld.jpg" alt="Plakat fürs Feld">
     </div>
 
     <!-- Titelbild -->
