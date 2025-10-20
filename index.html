@@ -53,14 +53,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 0; /* kein generelles Padding oben */
+      padding-top: 0;
       padding-bottom: 120px;
-      gap: 10vh; /* etwas geringerer, harmonischer Abstand */
+      gap: 10vh;
     }
 
     /* erstes Element bekommt gezielten Abstand nach oben */
     .content-item:first-child {
-      margin-top: -50px; /* feinjustierbar (z.B. 80–120px) */
+      margin-top: -50px;
     }
 
     /* Inhaltselemente */
@@ -82,8 +82,10 @@
     model-viewer {
       width: 100%;
       height: auto;
-      min-height: 500px; /* größer als zuvor */
+      min-height: 500px;
       background-color: transparent;
+      display: block;
+      margin-top: -60px; /* 👈 reduziert den Weißraum oben */
     }
 
     /* Mobile Anpassungen */
@@ -114,6 +116,7 @@
 
       model-viewer {
         min-height: 320px;
+        margin-top: -30px; /* etwas weniger Weißraum auf Handy */
       }
     }
   </style>
