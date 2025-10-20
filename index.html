@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>unsolide</title>
 
-  <!-- Favicon (kleines Logo im Browser-Tab) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
@@ -48,45 +48,60 @@
       text-decoration: underline;
     }
 
-    /* Hauptcontainer für Inhalte */
+    /* Hauptcontainer */
     .content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding-top: 120px; /* Platz für Logo */
-      padding-bottom: 100px; /* Platz für Instagram-Link */
-      gap: 200px; /* Weißraum zwischen den Elementen */
+      padding-top: 120px;
+      padding-bottom: 120px;
+      gap: 15vh; /* schöner vertikaler Abstand */
     }
 
-    /* Allgemeiner Stil für Inhalte */
+    /* Inhaltselemente */
     .content-item {
       width: 80%;
       max-width: 800px;
-      height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f7f7f7;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      overflow: hidden;
     }
 
-    /* Für Bilder */
+    /* Bilder */
     .content-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
+      object-fit: contain; /* sorgt dafür, dass nichts abgeschnitten wird */
     }
 
-    /* Für das 3D Modell */
+    /* 3D Modell */
     model-viewer {
       width: 100%;
-      height: 100%;
-      background-color: #fff;
+      aspect-ratio: 16 / 9; /* hält Seitenverhältnis dynamisch */
+      background-color: transparent;
     }
 
+    /* Mobile Anpassungen */
+    @media (max-width: 600px) {
+      .logo {
+        height: 45px;
+        top: 15px;
+        right: 15px;
+      }
+
+      .instagram-link {
+        font-size: 16px;
+        bottom: 15px;
+      }
+
+      .content {
+        gap: 10vh;
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
+      .content-item {
+        width: 90%;
+      }
+    }
   </style>
 
   <!-- Google Model Viewer -->
@@ -100,7 +115,7 @@
   <!-- Instagram Link -->
   <a href="https://www.instagram.com/wirsindunsolide/" class="instagram-link" target="_blank">Instagram</a>
 
-  <!-- Scrollbarer Inhaltsbereich -->
+  <!-- Inhalt -->
   <div class="content">
     <!-- Plakat -->
     <div class="content-item">
